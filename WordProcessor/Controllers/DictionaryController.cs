@@ -76,15 +76,6 @@ namespace WordProcessor
             List<string> words = new List<string>();
             using (ApplicationContext db = new ApplicationContext())
             {
-                //words = db.DictionaryModels
-                //    .Where(w => w.Word.StartsWith(text))
-                //    .OrderByDescending(w => w.Count)
-                //    .ThenBy(w => w.Word)
-                //    .Select(w => w.Word)
-                //    .Take(5)
-                //    .ToList();
-
-                //implementation without case sensitivity for some reason does not work
                 words = db.DictionaryModels
                     .Where(w => w.Word.ToLower().StartsWith(text.ToLower()))
                     .OrderByDescending(w => w.Count)
