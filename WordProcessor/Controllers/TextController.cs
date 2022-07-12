@@ -2,6 +2,23 @@
 {
     internal class TextController
     {
+        public static bool IsBeginOfSentece(string text)
+        {
+            var words = text.
+                Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            if(words.Length == 0)
+            {
+                return true;
+            }
+            if(words.Length >= 1)
+            {
+                if (words[^1].EndsWith("."))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public static bool IsMoreThenOneWords(string text)
         {
             var words = text.

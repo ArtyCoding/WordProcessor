@@ -80,7 +80,14 @@ namespace WordProcessor
             string word = listBox.SelectedItem.ToString();
             DictionaryController.UpdateDictionaryItem(word);
             TextController.RemovePrefix(textBox);
-            textBox.Text += word + " ";
+            if (TextController.IsBeginOfSentece(textBox.Text))
+            {
+                textBox.Text += word + " ";
+            }
+            else
+            {
+                textBox.Text += word.ToLower() + " ";
+            }
             textBox.Select(textBox.Text.Length, 0);
             listBox.Hide();
         }
